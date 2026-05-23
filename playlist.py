@@ -43,6 +43,7 @@ def extraer_links_playlist(url_playlist: str) -> list[str]:
     return links
 
 
+
 if __name__ == "__main__":
     playlist = "https://www.youtube.com/watch?v=87tGKlVxUvQ&list=PLtydJWrQWW-5kroVjsdQmka3DmOUEeyUe"
 
