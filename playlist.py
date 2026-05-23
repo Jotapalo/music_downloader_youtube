@@ -45,8 +45,6 @@ def extraer_links_playlist(url_playlist: str) -> list[str]:
 
 
 if __name__ == "__main__":
-    playlist = "https://www.youtube.com/watch?v=87tGKlVxUvQ&list=PLtydJWrQWW-5kroVjsdQmka3DmOUEeyUe"
-
     ydl_opts = {
     'format': 'bestaudio/best',
     'postprocessors': [{
@@ -57,7 +55,23 @@ if __name__ == "__main__":
     'username': f'{USERNAME}',  
     'password': f'{PASSWORD}', 
     }
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        for link in extraer_links_playlist(playlist):
+
+    print("1. Video")
+    print("2. PlayList")
+    option = input("> ")
+
+    if option == "1":
+        link = input("paste link: ")
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             ydl.download([link])
+
+    elif option == "2":
+        linkPlayList = input("paste link of playlist: ")
+
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            for link in extraer_links_playlist(linkPlayList):
+                ydl.download([link])
+
+    else:
+        print("Opcion no reconocida, saliendo...")
 
